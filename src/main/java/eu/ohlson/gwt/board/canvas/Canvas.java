@@ -1,7 +1,8 @@
 package eu.ohlson.gwt.board.canvas;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.Element;
 
 public class Canvas {
 
@@ -14,6 +15,9 @@ public class Canvas {
 	public Canvas(int width, int height) {
 		root = createElement();
 		drawContext = getContext(root);
+		
+		setWidth(width);
+		setHeight(height);
 	}
 	
 	public Element getElement() {
@@ -28,5 +32,22 @@ public class Canvas {
 		var e = $doc.createElement(this.@eu.ohlson.gwt.board.canvas.Canvas::tag);
 		return e;
 	}-*/;
-
+	
+	
+	public native void fillRect(int x, int y, int width, int height) /*-{
+		this.@eu.ohlson.gwt.board.canvas.Canvas::drawContext(I, I, I, I)(x,y,widht,height);
+	}-*/;
+	
+	private void setWidth(int width) {
+		DOM.setElementAttribute(getElement(), "width", Integer.toString(width));
+	}
+	
+	private void setHeight(int height) {
+		DOM.setElementAttribute(getElement(), "height", Integer.toString(height));
+	}
+	
+	
+	
+	
+	
 }
