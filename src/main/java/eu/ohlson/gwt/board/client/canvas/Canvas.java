@@ -38,6 +38,27 @@ public class Canvas {
 		this.@eu.ohlson.gwt.board.client.canvas.Canvas::drawContext.fillRect(x,y,width,height);
 	}-*/;
 	
+	public native void moveTo(int x, int y) /*-{
+		this.@eu.ohlson.gwt.board.client.canvas.Canvas::drawContext.moveTo(x,y);
+	}-*/;
+	
+	public native void lineTo(int x, int y) /*-{
+		this.@eu.ohlson.gwt.board.client.canvas.Canvas::drawContext.lineTo(x,y);
+	}-*/;
+	
+	public native void fillStyle(String fillStyle) /*-{
+		this.@eu.ohlson.gwt.board.client.canvas.Canvas::drawContext.fillStyle = fillStyle;
+	}-*/;
+	
+	public native void stroke() /*-{
+		this.@eu.ohlson.gwt.board.client.canvas.Canvas::drawContext.stroke();
+	}-*/;
+	
+	public native void clear() /*-{
+		this.@eu.ohlson.gwt.board.client.canvas.Canvas::drawContext.clearRect(0,0,this.@eu.ohlson.gwt.board.client.canvas.Canvas::root.width,this.@eu.ohlson.gwt.board.client.canvas.Canvas::root.height);
+	}-*/;
+	
+	
 	private void setWidth(int width) {
 		DOM.setElementAttribute(getElement(), "width", Integer.toString(width));
 	}
@@ -45,6 +66,8 @@ public class Canvas {
 	private void setHeight(int height) {
 		DOM.setElementAttribute(getElement(), "height", Integer.toString(height));
 	}
+	
+	
 	
 	
 	
