@@ -1,4 +1,4 @@
-package eu.ohlson.gwt.board.canvas;
+package eu.ohlson.gwt.board.client.canvas;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.user.client.DOM;
@@ -29,13 +29,13 @@ public class Canvas {
 	}-*/;
 
 	private native Element createElement()/*-{
-		var e = $doc.createElement(this.@eu.ohlson.gwt.board.canvas.Canvas::tag);
+		var e = $doc.createElement(this.@eu.ohlson.gwt.board.client.canvas.Canvas::tag);
 		return e;
 	}-*/;
 	
 	
 	public native void fillRect(int x, int y, int width, int height) /*-{
-		this.@eu.ohlson.gwt.board.canvas.Canvas::drawContext(I, I, I, I)(x,y,widht,height);
+		this.@eu.ohlson.gwt.board.client.canvas.Canvas::drawContext.fillRect(x,y,width,height);
 	}-*/;
 	
 	private void setWidth(int width) {
