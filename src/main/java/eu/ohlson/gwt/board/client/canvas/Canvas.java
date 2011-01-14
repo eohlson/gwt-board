@@ -6,7 +6,7 @@ import com.google.gwt.user.client.Element;
 
 public class Canvas {
 
-	public static final String tag = "canvas";
+	public final String tag = "canvas";
 
 	private final Element root;
 
@@ -15,11 +15,11 @@ public class Canvas {
 	public Canvas(int width, int height) {
 		root = createElement();
 		drawContext = getContext(root);
-		
+
 		setWidth(width);
 		setHeight(height);
 	}
-	
+
 	public Element getElement() {
 		return root;
 	}
@@ -32,45 +32,42 @@ public class Canvas {
 		var e = $doc.createElement(this.@eu.ohlson.gwt.board.client.canvas.Canvas::tag);
 		return e;
 	}-*/;
-	
-	
+
 	public native void fillRect(int x, int y, int width, int height) /*-{
 		this.@eu.ohlson.gwt.board.client.canvas.Canvas::drawContext.fillRect(x,y,width,height);
 	}-*/;
-	
+
 	public native void moveTo(int x, int y) /*-{
 		this.@eu.ohlson.gwt.board.client.canvas.Canvas::drawContext.moveTo(x,y);
 	}-*/;
-	
+
 	public native void lineTo(int x, int y) /*-{
 		this.@eu.ohlson.gwt.board.client.canvas.Canvas::drawContext.lineTo(x,y);
 	}-*/;
-	
+
 	public native void fillStyle(String fillStyle) /*-{
 		this.@eu.ohlson.gwt.board.client.canvas.Canvas::drawContext.fillStyle = fillStyle;
 	}-*/;
-	
+
 	public native void stroke() /*-{
 		this.@eu.ohlson.gwt.board.client.canvas.Canvas::drawContext.stroke();
 	}-*/;
-	
-	public native void clear() /*-{
-		this.@eu.ohlson.gwt.board.client.canvas.Canvas::drawContext.clearRect(0,0,this.@eu.ohlson.gwt.board.client.canvas.Canvas::root.width,this.@eu.ohlson.gwt.board.client.canvas.Canvas::root.height);
+
+	public native void clear(int x, int y, int height, int width) /*-{
+		this.@eu.ohlson.gwt.board.client.canvas.Canvas::drawContext.clearRect(x,y,height, width);
 	}-*/;
-	
-	
+
+	public void clearAll() {
+		clear(0,0, Integer.parseInt(root.getAttribute("height")), Integer.parseInt(root.getAttribute("width")));
+	}
+
 	private void setWidth(int width) {
 		DOM.setElementAttribute(getElement(), "width", Integer.toString(width));
 	}
-	
+
 	private void setHeight(int height) {
-		DOM.setElementAttribute(getElement(), "height", Integer.toString(height));
+		DOM.setElementAttribute(getElement(), "height",
+				Integer.toString(height));
 	}
-	
-	
-	
-	
-	
-	
-	
+
 }

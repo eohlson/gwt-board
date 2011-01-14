@@ -40,7 +40,7 @@ public class CanvasWidget extends Widget implements HasAllMouseHandlers {
 			public void onMouseDown(MouseDownEvent event) {
 				Postit hitPostit = getHittedPostit(event.getX(), event.getY());
 				if (hitPostit == null) {
-					dragged = addNewPostit(event);
+					hitPostit = addNewPostit(event);
 					redraw();
 				}
 
@@ -104,7 +104,7 @@ public class CanvasWidget extends Widget implements HasAllMouseHandlers {
 	}
 
 	private void redraw() {
-		canvas.clear();
+		canvas.clearAll();
 
 		for (Postit postit : postits) {
 			canvas.fillStyle("black");
